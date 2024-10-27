@@ -1,0 +1,46 @@
+<div class="d-flex flex-column align-items-center col-12">
+  <div class="mt-4 mb-3 text-center">
+    <h1 class="fw-bold">{{ isEditMode ? "Update Task" : "Add Task" }}</h1>
+  </div>
+  <form class="col-8 shadow p-5 bg-body-tertiary rounded-3" [formGroup]="TaskForm" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+      <label for="title" class="form-label fw-semibold">Title</label>
+      <input type="text" class="form-control" id="title" formControlName="title" placeholder="Enter task title" required>
+    </div>
+
+    <div class="mb-4">
+      <label for="description" class="form-label fw-semibold">Description</label>
+      <textarea class="form-control" id="description" formControlName="description" placeholder="Enter task description" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-4">
+      <label for="dueDate" class="form-label fw-semibold">Due Date: </label>
+      <input type="text" autocomplete="off" id="dueDate" formControlName="dueDate" placeholder="Select due date" bsDatepicker required>
+    </div>
+
+    <div class="mb-4">
+      <label for="priority" class="form-label fw-semibold">Priority</label>
+      <select class="form-select" id="priority" formControlName="priority" required>
+        <option value="" disabled>Select priority level</option>
+        <option value="Hard">Hard</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label for="users" class="form-label fw-semibold">Assigned User</label>
+      <select class="formControlName" id="assignee" formControlName="assigneeId" required>
+        <option value="" disabled>Select a user</option>
+        <ng-container *ngFor="let user of Users">
+          <option [value]="user.id">{{ user.name }}</option>
+        </ng-container>
+      </select>
+    </div>
+
+    <div class="d-flex gap-3 mt-4">
+      <button type="submit" class="btn btn-primary col-6" [disabled]="TaskForm.invalid">Submit</button>
+      <button type="button" class="btn btn-outline-secondary col-6" [routerLink]="['/task-list']">Cancel</button>
+    </div>
+  </form>
+</div>
