@@ -33,6 +33,8 @@ export class TaskListComponent implements OnInit {
     this.router.navigate(['/task-edit',id]);
   }
 
+  
+
   DeleteTask(id:number){
     if(confirm("Do you want to delete?")){
       this.taskservice.deleteTask(id).subscribe((data) => {

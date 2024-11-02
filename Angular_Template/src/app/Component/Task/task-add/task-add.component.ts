@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {  FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {  FormBuilder, FormGroup, FormsModule,FormArray, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskService } from '../../../Service/task.service';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { User, UserService } from '../../../Service/user.service';
 import { HomeComponent } from '../../home/home.component';
+
 
 @Component({
   selector: 'app-task-add',
@@ -22,6 +23,7 @@ export class TaskAddComponent implements OnInit{
   UID:number;
   Users:User[] = [];
   
+  
 
 
   constructor(private fb:FormBuilder , private taskService:TaskService , private router:Router ,private rout:ActivatedRoute, private toastr: ToastrService ,private userservice:UserService){
@@ -31,9 +33,11 @@ export class TaskAddComponent implements OnInit{
       dueDate:[''],
       priority:['',Validators.required],
       assigneeId:[''],
-      // userId:['']
+      checkLists : this.fb.array([])
       
     })
+
+  
 
     this.UID = Number(rout.snapshot.paramMap.get('id'));
     if(this.UID){
@@ -63,6 +67,23 @@ export class TaskAddComponent implements OnInit{
         })
       });
     }
+  }
+
+  get Mychecklist():FormArray{
+    return this.TaskForm.get('checkLists') as FormArray
+  }
+
+  addCheckList(){
+    this.Mychecklist.push(
+      this.fb.group({
+        name:[""],
+        isDone:[false]
+      })
+    );
+  }
+
+  removeCheckList(index:number){
+    this.Mychecklist.removeAt(index);
   }
 
   onSubmit(){

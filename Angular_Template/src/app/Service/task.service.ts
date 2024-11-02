@@ -40,4 +40,11 @@ export interface Task{
   userId:number,
   user:User,
   assignee:User
+  checkLists:checkList[]
+}
+
+export interface checkList{
+  id:number,
+  name:string,
+  isDone:boolean
 }
