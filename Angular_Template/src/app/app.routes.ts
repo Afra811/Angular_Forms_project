@@ -4,6 +4,8 @@ import { TaskAddComponent } from './Component/Task/task-add/task-add.component';
 import { HomeComponent } from './Component/home/home.component';
 import { UserListComponent } from './Component/User/user-list/user-list.component';
 import { UserAddComponent } from './Component/User/user-add/user-add.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
     {path:'' , component:HomeComponent},
@@ -14,5 +16,7 @@ export const routes: Routes = [
 
     {path:'user-list' , component:UserListComponent},
     {path:'user-add' , component:UserAddComponent},
-    {path:'user-edit/:id' , component:UserAddComponent}
+    {path:'user-edit/:id' , component:UserAddComponent},
+    {path:'register',component:RegisterComponent},
+    {path:'login',component:LoginComponent}
 ];

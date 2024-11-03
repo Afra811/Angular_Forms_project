@@ -4,6 +4,8 @@ namespace TaskManagerAPI.Entity
 {
     public class User
     {
+        internal string Password;
+
         [Key]
         public int Id { get; set; }
         [Required]

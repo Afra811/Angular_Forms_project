@@ -18,5 +18,7 @@ namespace TaskManagerAPI.Entity
         public User? Assignee { get; set; }
         public int? AssigneeId { get; set; }
 
+        public ICollection<CheckList>?checkLists { get; set; }
+
     }
 }
