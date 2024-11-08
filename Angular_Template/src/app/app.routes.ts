@@ -9,6 +9,8 @@ import { RegisterComponent } from './register/register.component';
 
 export const routes: Routes = [
     {path:'' , component:HomeComponent},
+    {path:'register',component:RegisterComponent},
+    {path:'login',component:LoginComponent},
 
     {path:'task-list' , component:TaskListComponent},
     {path:'task-add' , component:TaskAddComponent},
@@ -17,6 +19,5 @@ export const routes: Routes = [
     {path:'user-list' , component:UserListComponent},
     {path:'user-add' , component:UserAddComponent},
     {path:'user-edit/:id' , component:UserAddComponent},
-    {path:'register',component:RegisterComponent},
-    {path:'login',component:LoginComponent}
+   
 ];
